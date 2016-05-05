@@ -3,6 +3,7 @@
 namespace TypiCMS\Modules\Pages\Observers;
 
 use TypiCMS\Modules\Pages\Models\PageTranslation;
+use Config;
 
 class UriObserver
 {
@@ -29,7 +30,7 @@ class UriObserver
     {
         $parentUri = $this->getParentUri($model);
 
-        if ($parentUri) {
+        if (!Config::get('typicms.single_level_urls') && $parentUri) {
             $uri = $parentUri;
             if ($model->slug) {
                 $uri .= '/'.$model->slug;
