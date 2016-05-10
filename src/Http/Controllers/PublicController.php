@@ -11,7 +11,7 @@ class PublicController extends BasePublicController
 {
     public function __construct(PageInterface $page)
     {
-        parent::__construct($page);
+        parent::__construct($page, 'page');
     }
 
     /**
@@ -21,6 +21,9 @@ class PublicController extends BasePublicController
      */
     public function uri($page = null)
     {
+        $app = app();
+        $app->instance('currentPage', $page);
+
         if (!$page) {
             abort('404');
         }

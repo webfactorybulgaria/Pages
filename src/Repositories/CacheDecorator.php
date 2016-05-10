@@ -90,4 +90,28 @@ class CacheDecorator extends CacheAbstractDecorator implements PageInterface
     {
         return $this->repo->allForSelect();
     }
+
+    /**
+     * Get all translated pages for a menu tree.
+     *
+     * @return array
+     */
+    public function allForTreeMap()
+    {
+
+        $cacheKey = md5(config('app.locale').'allForTreeMap');
+
+        if ($this->cache->has($cacheKey)) {
+            return $this->cache->get($cacheKey);
+        }
+
+        // Item not cached, retrieve it
+        $models = $this->repo->allForTreeMap();
+
+        // Store in cache for next request
+        $this->cache->put($cacheKey, $models);
+
+        return $models;
+    }
+
 }

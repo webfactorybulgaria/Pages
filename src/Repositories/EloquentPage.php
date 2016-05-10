@@ -152,4 +152,17 @@ class EloquentPage extends RepositoriesAbstract implements PageInterface
     {
         event('page.resetChildrenUri', [$page]);
     }
+
+    /**
+     * Get all translated pages for a select/options.
+     *
+     * @return array
+     */
+    public function allForTreeMap()
+    {
+        $pages = $this->model->online()->get()
+            ->listsFlattened('parent_id');
+
+        return $pages;
+    }
 }
