@@ -21,7 +21,7 @@ class EloquentPage extends RepositoriesAbstract implements PageInterface
      *
      * @return bool
      */
-    public function update(array $data)
+    public function update(array $data, array $syncTables = [])
     {
         $model = $this->model->find($data['id']);
 
