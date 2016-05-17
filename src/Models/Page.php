@@ -32,6 +32,7 @@ class Page extends Base
         'module',
         'template',
         'image',
+        'system_name',
         // Translatable columns
         'title',
         'slug',

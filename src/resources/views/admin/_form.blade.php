@@ -26,6 +26,11 @@
     <div class="tab-pane fade in active" id="tab-content">
         @include('core::admin._image-fieldset', ['field' => 'image'])
         <div class="row">
+            <div class="col-md-12">
+                {!! BootForm::text(trans('validation.attributes.system_name'), 'system_name') !!}
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 {!! TranslatableBootForm::text(trans('validation.attributes.title'), 'title') !!}
             </div>
