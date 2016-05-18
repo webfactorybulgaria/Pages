@@ -9,6 +9,10 @@
 @endif
 @section('bodyClass', 'body-page body-page-' . $page->id)
 
+@section('meta_tags')
+{!! $page->meta_tags !!}
+@endsection
+
 @section('css')
     @if($page->css)
     <style type="text/css">

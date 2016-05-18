@@ -58,6 +58,7 @@
     <div class="tab-pane fade" id="tab-meta">
         {!! TranslatableBootForm::text(trans('validation.attributes.meta_keywords'), 'meta_keywords') !!}
         {!! TranslatableBootForm::text(trans('validation.attributes.meta_description'), 'meta_description') !!}
+        {!! TranslatableBootForm::textarea(trans('validation.attributes.meta_tags'), 'meta_tags') !!}
     </div>
 
     <div class="tab-pane fade" id="tab-options">

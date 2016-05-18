@@ -41,6 +41,7 @@ class Page extends Base
         'body',
         'meta_keywords',
         'meta_description',
+        'meta_tags',
     ];
 
     /**
@@ -56,6 +57,7 @@ class Page extends Base
         'body',
         'meta_keywords',
         'meta_description',
+        'meta_tags',
     ];
 
     protected $appends = ['status', 'title', 'thumb', 'uri'];
