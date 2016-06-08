@@ -32,6 +32,7 @@ class Page extends Base
         'module',
         'template',
         'image',
+        'system_name',
         // Translatable columns
         'title',
         'slug',
@@ -40,6 +41,7 @@ class Page extends Base
         'body',
         'meta_keywords',
         'meta_description',
+        'meta_tags',
     ];
 
     /**
@@ -55,6 +57,7 @@ class Page extends Base
         'body',
         'meta_keywords',
         'meta_description',
+        'meta_tags',
     ];
 
     protected $appends = ['thumb'];
