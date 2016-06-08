@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Pages\Models;
 
-use Dimsav\Translatable\Translatable;
+use TypiCMS\Modules\Core\Traits\Translatable;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Laracasts\Presenter\PresentableTrait;
 use TypiCMS\Modules\Core\Models\Base;
@@ -57,7 +57,7 @@ class Page extends Base
         'meta_description',
     ];
 
-    protected $appends = ['status', 'title', 'thumb', 'uri'];
+    protected $appends = ['thumb'];
 
     /**
      * Is this page cacheable?
@@ -82,7 +82,16 @@ class Page extends Base
         if (!$this->hasTranslation($locale)) {
             return;
         }
-        $uri = $this->translate($locale)->uri;
+        if ($locale != config('app.locale')) {
+            $translated = $this->translate($locale);
+            if ($translated->status) {
+                $uri = $translated->uri;
+            } else {
+                $uri = null;
+            }
+        } else {
+            $uri = $this->uri;
+        }
         if (
             config('app.fallback_locale') != $locale ||
             config('typicms.main_locale_in_url')
@@ -91,16 +100,6 @@ class Page extends Base
         }
 
         return $uri ?: '/';
-    }
-
-    /**
-     * Get uri attribute from translation table.
-     *
-     * @return string uri
-     */
-    public function getUriAttribute($value)
-    {
-        return $this->uri;
     }
 
     /**

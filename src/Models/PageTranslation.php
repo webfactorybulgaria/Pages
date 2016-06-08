@@ -16,6 +16,6 @@ class PageTranslation extends BaseTranslation
 
     public function owner()
     {
-        return $this->belongsTo('TypiCMS\Modules\Pages\Models\Page', 'page_id');
+        return $this->belongsTo('TypiCMS\Modules\Pages\Models\Page', 'page_id')->withoutGlobalScopes();
     }
 }

@@ -50,7 +50,7 @@ class EloquentPage extends RepositoriesAbstract implements PageInterface
     public function getFirstByUri($uri, $locale, array $with = [])
     {
         $model = $this->make($with)
-            ->whereHas('translations', function (Builder $query) use ($uri, $locale) {
+            ->where(function (Builder $query) use ($uri, $locale) {
                 $query->where('uri', $uri)
                     ->where('locale', $locale);
                 if (!Request::input('preview')) {
@@ -78,10 +78,8 @@ class EloquentPage extends RepositoriesAbstract implements PageInterface
         }
 
         $query = $this->model
-            ->with('translations')
             ->select('*')
             ->addSelect('pages.id AS id')
-            ->join('page_translations', 'pages.id', '=', 'page_translations.page_id')
             ->where('uri', '!=', $uri)
             ->where('uri', 'LIKE', $uri.'%');
 
@@ -160,7 +158,7 @@ class EloquentPage extends RepositoriesAbstract implements PageInterface
      */
     public function allForTreeMap()
     {
-        $pages = $this->model->online()->get()
+        $pages = $this->model->withoutGlobalScopes()->select(['pages.id', 'pages.parent_id'])->get()
             ->listsFlattened('parent_id');
 
         return $pages;
