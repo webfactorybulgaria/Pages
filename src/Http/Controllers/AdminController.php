@@ -2,7 +2,6 @@
 
 namespace TypiCMS\Modules\Pages\Http\Controllers;
 
-use JavaScript;
 use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
 use TypiCMS\Modules\Pages\Http\Requests\FormRequest;
 use TypiCMS\Modules\Pages\Models\Page;
@@ -22,13 +21,10 @@ class AdminController extends BaseAdminController
      */
     public function index()
     {
-        $module = $this->repository->getTable();
-        $title = trans($module.'::global.name');
         $models = $this->repository->allNested([], true);
-        JavaScript::put('models', $models);
+        app('JavaScript')->put('models', $models);
 
-        return view('core::admin.index')
-            ->with(compact('title', 'module', 'models'));
+        return view('pages::admin.index');
     }
 
     /**
@@ -40,7 +36,7 @@ class AdminController extends BaseAdminController
     {
         $model = $this->repository->getModel();
 
-        return view('core::admin.create')
+        return view('pages::admin.create')
             ->with(compact('model'));
     }
 
@@ -53,7 +49,7 @@ class AdminController extends BaseAdminController
      */
     public function edit(Page $page)
     {
-        return view('core::admin.edit')
+        return view('pages::admin.edit')
             ->with(['model' => $page]);
     }
 

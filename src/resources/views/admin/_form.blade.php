@@ -1,6 +1,5 @@
 @section('js')
     <script src="{{ asset('components/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('js/admin/form.js') }}"></script>
 @endsection
 
 @include('core::admin._buttons-form')
@@ -71,13 +70,13 @@
         {!! BootForm::hidden('no_cache')->value(0) !!}
         {!! BootForm::checkbox(trans('validation.attributes.don’t generate HTML cache'), 'no_cache') !!}
         @if ($model->children->count())
-            {!! BootForm::select(trans('validation.attributes.module'), 'module', TypiCMS::getModulesForSelect())->disabled('disabled')->helpBlock(trans('pages::global.Parent cannot be module')) !!}
+            {!! BootForm::select(trans('validation.attributes.module'), 'module', TypiCMS::getModulesForSelect())->disabled('disabled')->helpBlock(trans('pages::global.A page with children cannot be linked to a module')) !!}
         @else
             {!! BootForm::select(trans('validation.attributes.module'), 'module', TypiCMS::getModulesForSelect()) !!}
         @endif
         {!! BootForm::select(trans('validation.attributes.template'), 'template', TypiCMS::templates())->helpBlock(TypiCMS::getTemplateDir()) !!}
         @if (!$model->id)
-        {!! BootForm::select(trans('validation.attributes.add_to_menu'), 'add_to_menu', ['' => ''] + Menus::all()->pluck('title', 'id')->all(), null, array('class' => 'form-control')) !!}
+        {!! BootForm::select(trans('validation.attributes.add_to_menu'), 'add_to_menu', ['' => ''] + Menus::all()->pluck('name', 'id')->all(), null, array('class' => 'form-control')) !!}
         @endif
         {!! BootForm::textarea(trans('validation.attributes.css'), 'css') !!}
         {!! BootForm::textarea(trans('validation.attributes.js'), 'js') !!}

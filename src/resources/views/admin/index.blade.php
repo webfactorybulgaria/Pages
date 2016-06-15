@@ -1,6 +1,13 @@
+@extends('core::admin.master')
+
+@section('title', trans('pages::global.name'))
+
+@section('main')
+
 <div ng-app="typicms" ng-cloak ng-controller="ListController">
 
-    <a href="{{ route('admin.' . $module . '.create') }}" class="btn-add"><i class="fa fa-plus-circle"></i><span class="sr-only">New</span></a>
+    @include('core::admin._button-create', ['module' => 'pages'])
+
     <h1>
         <span>Pages</span>
     </h1>
@@ -17,3 +24,5 @@
     </div>
 
 </div>
+
+@endsection

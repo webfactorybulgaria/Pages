@@ -106,6 +106,16 @@ class Page extends Base
     }
 
     /**
+     * Append thumb attribute.
+     *
+     * @return string
+     */
+    public function getThumbAttribute()
+    {
+        return $this->present()->thumbSrc(null, 22);
+    }
+
+    /**
      * A page can have menulinks.
      */
     public function menulinks()
