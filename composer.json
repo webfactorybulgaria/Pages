@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "webfactorybulgaria/core": "dev-master"
+        "webfactorybulgaria/core": "dev-dev"
     },
     "autoload": {
         "psr-4": {
