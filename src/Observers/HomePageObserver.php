@@ -16,7 +16,7 @@ class HomePageObserver
     public function saving(Page $model)
     {
         if ($model->is_home) {
-            $query = Page::where('is_home', 1);
+            $query = Page::withoutGlobalScopes()->where('is_home', 1);
             if ($model->id) {
                 $query->where('id', '!=', $model->id);
             }
