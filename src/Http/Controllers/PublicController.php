@@ -22,6 +22,10 @@ class PublicController extends BasePublicController
     public function uri($page = null)
     {
         $app = app();
+        if ($app->make('request')->path() != $page->uri() && !$page->is_home) {
+            return redirect($page->uri());
+        }
+
         $app->instance('currentPage', $page);
 
         if (!$page) {
@@ -29,7 +33,7 @@ class PublicController extends BasePublicController
         }
 
         if ($page->private && !Auth::check()) {
-            abort('403');
+            return redirect()->guest(route(config('app.locale') . '.login'));
         }
 
         if ($page->redirect) {
