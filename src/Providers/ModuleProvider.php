@@ -5,17 +5,17 @@ namespace TypiCMS\Modules\Pages\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use TypiCMS\Modules\Core\Observers\FileObserver;
-use TypiCMS\Modules\Core\Services\Cache\LaravelCache;
-use TypiCMS\Modules\Pages\Events\ResetChildren;
-use TypiCMS\Modules\Pages\Models\Page;
-use TypiCMS\Modules\Pages\Models\PageTranslation;
-use TypiCMS\Modules\Pages\Observers\AddToMenuObserver;
-use TypiCMS\Modules\Pages\Observers\HomePageObserver;
-use TypiCMS\Modules\Pages\Observers\SortObserver;
-use TypiCMS\Modules\Pages\Observers\UriObserver;
-use TypiCMS\Modules\Pages\Repositories\CacheDecorator;
-use TypiCMS\Modules\Pages\Repositories\EloquentPage;
+use TypiCMS\Modules\Core\Custom\Observers\FileObserver;
+use TypiCMS\Modules\Core\Custom\Services\Cache\LaravelCache;
+use TypiCMS\Modules\Pages\Custom\Events\ResetChildren;
+use TypiCMS\Modules\Pages\Custom\Models\Page;
+use TypiCMS\Modules\Pages\Custom\Models\PageTranslation;
+use TypiCMS\Modules\Pages\Custom\Observers\AddToMenuObserver;
+use TypiCMS\Modules\Pages\Custom\Observers\HomePageObserver;
+use TypiCMS\Modules\Pages\Custom\Observers\SortObserver;
+use TypiCMS\Modules\Pages\Custom\Observers\UriObserver;
+use TypiCMS\Modules\Pages\Custom\Repositories\CacheDecorator;
+use TypiCMS\Modules\Pages\Custom\Repositories\EloquentPage;
 
 class ModuleProvider extends ServiceProvider
 {
@@ -40,7 +40,7 @@ class ModuleProvider extends ServiceProvider
 
         AliasLoader::getInstance()->alias(
             'Pages',
-            'TypiCMS\Modules\Pages\Facades\Facade'
+            'TypiCMS\Modules\Pages\Custom\Facades\Facade'
         );
 
         // Observers
@@ -58,19 +58,19 @@ class ModuleProvider extends ServiceProvider
         /*
          * Register route service provider
          */
-        $app->register('TypiCMS\Modules\Pages\Providers\RouteServiceProvider');
+        $app->register('TypiCMS\Modules\Pages\Custom\Providers\RouteServiceProvider');
 
         /*
          * Sidebar view composer
          */
-        $app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Pages\Composers\SidebarViewComposer');
+        $app->view->composer('core::admin._sidebar', 'TypiCMS\Modules\Pages\Custom\Composers\SidebarViewComposer');
 
         /*
          * Events
          */
         $app->events->subscribe(new ResetChildren());
 
-        $app->bind('TypiCMS\Modules\Pages\Repositories\PageInterface', function (Application $app) {
+        $app->bind('TypiCMS\Modules\Pages\Custom\Repositories\PageInterface', function (Application $app) {
             $repository = new EloquentPage(new Page());
             if (!config('typicms.cache')) {
                 return $repository;

@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Pages\Observers;
 
-use TypiCMS\Modules\Pages\Models\Page;
+use TypiCMS\Modules\Pages\Custom\Models\Page;
 
 class HomePageObserver
 {

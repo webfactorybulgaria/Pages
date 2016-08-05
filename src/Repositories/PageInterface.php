@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Pages\Repositories;
 
-use TypiCMS\Modules\Core\Repositories\RepositoryInterface;
+use TypiCMS\Modules\Core\Custom\Repositories\RepositoryInterface;
 
 interface PageInterface extends RepositoryInterface
 {
@@ -13,7 +13,7 @@ interface PageInterface extends RepositoryInterface
      * @param string $locale
      * @param array  $with
      *
-     * @return TypiCMS\Modules\Models\Page $model
+     * @return TypiCMS\Modules\Models\Custom\Page $model
      */
     public function getFirstByUri($uri, $locale, array $with = []);
 

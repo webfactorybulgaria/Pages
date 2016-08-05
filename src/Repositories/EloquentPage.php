@@ -5,7 +5,7 @@ namespace TypiCMS\Modules\Pages\Repositories;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Repositories\RepositoriesAbstract;
+use TypiCMS\Modules\Core\Custom\Repositories\RepositoriesAbstract;
 
 class EloquentPage extends RepositoriesAbstract implements PageInterface
 {
@@ -45,7 +45,7 @@ class EloquentPage extends RepositoriesAbstract implements PageInterface
      * @param string $locale
      * @param array  $with
      *
-     * @return TypiCMS\Modules\Models\Page $model
+     * @return TypiCMS\Modules\Models\Custom\Page $model
      */
     public function getFirstByUri($uri, $locale, array $with = [])
     {

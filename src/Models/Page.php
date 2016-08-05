@@ -2,11 +2,11 @@
 
 namespace TypiCMS\Modules\Pages\Models;
 
-use TypiCMS\Modules\Core\Traits\Translatable;
+use TypiCMS\Modules\Core\Custom\Traits\Translatable;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Laracasts\Presenter\PresentableTrait;
-use TypiCMS\Modules\Core\Models\Base;
-use TypiCMS\Modules\History\Traits\Historable;
+use TypiCMS\Modules\Core\Custom\Models\Base;
+use TypiCMS\Modules\History\Custom\Traits\Historable;
 use TypiCMS\NestableTrait;
 
 class Page extends Base
@@ -16,7 +16,7 @@ class Page extends Base
     use PresentableTrait;
     use NestableTrait;
 
-    protected $presenter = 'TypiCMS\Modules\Pages\Presenters\ModulePresenter';
+    protected $presenter = 'TypiCMS\Modules\Pages\Custom\Presenters\ModulePresenter';
 
     protected $fillable = [
         'meta_robots_no_index',
@@ -120,7 +120,7 @@ class Page extends Base
      */
     public function menulinks()
     {
-        return $this->hasMany('TypiCMS\Modules\Menulinks\Models\Menulink');
+        return $this->hasMany('TypiCMS\Modules\Menulinks\Custom\Models\Menulink');
     }
 
     /**
@@ -130,7 +130,7 @@ class Page extends Base
      */
     public function galleries()
     {
-        return $this->morphToMany('TypiCMS\Modules\Galleries\Models\Gallery', 'galleryable')
+        return $this->morphToMany('TypiCMS\Modules\Galleries\Custom\Models\Gallery', 'galleryable')
             ->withPivot('position')
             ->orderBy('position')
             ->withTimestamps();
@@ -141,7 +141,7 @@ class Page extends Base
      */
     public function children()
     {
-        return $this->hasMany('TypiCMS\Modules\Pages\Models\Page', 'parent_id')->order();
+        return $this->hasMany('TypiCMS\Modules\Pages\Custom\Models\Page', 'parent_id')->order();
     }
 
     /**
@@ -149,6 +149,6 @@ class Page extends Base
      */
     public function parent()
     {
-        return $this->belongsTo('TypiCMS\Modules\Pages\Models\Page', 'parent_id');
+        return $this->belongsTo('TypiCMS\Modules\Pages\Custom\Models\Page', 'parent_id');
     }
 }

@@ -3,9 +3,9 @@
 namespace TypiCMS\Modules\Pages\Http\Controllers;
 
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Http\Controllers\BaseApiController;
-use TypiCMS\Modules\Pages\Models\Page;
-use TypiCMS\Modules\Pages\Repositories\PageInterface as Repository;
+use TypiCMS\Modules\Core\Custom\Http\Controllers\BaseApiController;
+use TypiCMS\Modules\Pages\Custom\Models\Page;
+use TypiCMS\Modules\Pages\Custom\Repositories\PageInterface as Repository;
 
 class ApiController extends BaseApiController
 {
@@ -61,7 +61,7 @@ class ApiController extends BaseApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param \TypiCMS\Modules\Pages\Models\Page $page
+     * @param \TypiCMS\Modules\Pages\Custom\Models\Page $page
      *
      * @return \Illuminate\Http\JsonResponse
      */

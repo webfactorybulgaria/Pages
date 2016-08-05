@@ -3,8 +3,8 @@
 namespace TypiCMS\Modules\Pages\Repositories;
 
 use Illuminate\Support\Facades\Request;
-use TypiCMS\Modules\Core\Repositories\CacheAbstractDecorator;
-use TypiCMS\Modules\Core\Services\Cache\CacheInterface;
+use TypiCMS\Modules\Core\Custom\Repositories\CacheAbstractDecorator;
+use TypiCMS\Modules\Core\Custom\Services\Cache\CacheInterface;
 
 class CacheDecorator extends CacheAbstractDecorator implements PageInterface
 {
@@ -21,7 +21,7 @@ class CacheDecorator extends CacheAbstractDecorator implements PageInterface
      * @param string $locale
      * @param array  $with
      *
-     * @return TypiCMS\Modules\Models\Page $model
+     * @return TypiCMS\Modules\Models\Custom\Page $model
      */
     public function getFirstByUri($uri, $locale, array $with = [])
     {

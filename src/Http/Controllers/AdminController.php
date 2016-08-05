@@ -2,10 +2,10 @@
 
 namespace TypiCMS\Modules\Pages\Http\Controllers;
 
-use TypiCMS\Modules\Core\Http\Controllers\BaseAdminController;
-use TypiCMS\Modules\Pages\Http\Requests\FormRequest;
-use TypiCMS\Modules\Pages\Models\Page;
-use TypiCMS\Modules\Pages\Repositories\PageInterface;
+use TypiCMS\Modules\Core\Custom\Http\Controllers\BaseAdminController;
+use TypiCMS\Modules\Pages\Custom\Http\Requests\FormRequest;
+use TypiCMS\Modules\Pages\Custom\Models\Page;
+use TypiCMS\Modules\Pages\Custom\Repositories\PageInterface;
 
 class AdminController extends BaseAdminController
 {
@@ -43,7 +43,7 @@ class AdminController extends BaseAdminController
     /**
      * Edit form for the specified resource.
      *
-     * @param \TypiCMS\Modules\Pages\Models\Page $page
+     * @param \TypiCMS\Modules\Pages\Custom\Models\Page $page
      *
      * @return \Illuminate\View\View
      */
@@ -56,7 +56,7 @@ class AdminController extends BaseAdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param \TypiCMS\Modules\Pages\Http\Requests\FormRequest $request
+     * @param \TypiCMS\Modules\Pages\Custom\Http\Requests\FormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -72,8 +72,8 @@ class AdminController extends BaseAdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param \TypiCMS\Modules\Pages\Models\Page               $page
-     * @param \TypiCMS\Modules\Pages\Http\Requests\FormRequest $request
+     * @param \TypiCMS\Modules\Pages\Custom\Models\Page               $page
+     * @param \TypiCMS\Modules\Pages\Custom\Http\Requests\FormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
