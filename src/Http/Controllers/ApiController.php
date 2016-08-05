@@ -19,7 +19,7 @@ class ApiController extends BaseApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index($builder = null)
     {
         $models = $this->repository->allNested([], true);
 
