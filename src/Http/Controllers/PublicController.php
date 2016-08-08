@@ -4,8 +4,8 @@ namespace TypiCMS\Modules\Pages\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use TypiCMS;
-use TypiCMS\Modules\Core\Custom\Http\Controllers\BasePublicController;
-use TypiCMS\Modules\Pages\Custom\Repositories\PageInterface;
+use TypiCMS\Modules\Core\Shells\Http\Controllers\BasePublicController;
+use TypiCMS\Modules\Pages\Shells\Repositories\PageInterface;
 
 class PublicController extends BasePublicController
 {

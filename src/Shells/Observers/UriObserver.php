@@ -1,6 +1,6 @@
 <?php
 
-namespace TypiCMS\Modules\Pages\Custom\Observers;
+namespace TypiCMS\Modules\Pages\Shells\Observers;
 
 use TypiCMS\Modules\Pages\Observers\UriObserver as Base;
 

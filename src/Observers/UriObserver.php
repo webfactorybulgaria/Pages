@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Pages\Observers;
 
-use TypiCMS\Modules\Pages\Custom\Models\PageTranslation;
+use TypiCMS\Modules\Pages\Shells\Models\PageTranslation;
 use Config;
 
 class UriObserver
