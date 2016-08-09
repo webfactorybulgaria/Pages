@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Pages\Presenters;
 
-use TypiCMS\Modules\Core\Presenters\Presenter;
+use TypiCMS\Modules\Core\Shells\Presenters\Presenter;
 
 class ModulePresenter extends Presenter
 {

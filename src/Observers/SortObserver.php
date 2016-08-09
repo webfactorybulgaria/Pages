@@ -2,7 +2,7 @@
 
 namespace TypiCMS\Modules\Pages\Observers;
 
-use TypiCMS\Modules\Pages\Models\Page;
+use TypiCMS\Modules\Pages\Shells\Models\Page;
 
 class SortObserver
 {
