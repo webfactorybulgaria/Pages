@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Pages\Shells\Models;
 
-use TypiCMS\Modules\Pages\Models\PageTranslation as Base;
+use TypiCMS\Modules\Pages\Models\PageTranslation as BaseClass;
 
-class PageTranslation extends Base
+class PageTranslation extends BaseClass
 {
 
 }

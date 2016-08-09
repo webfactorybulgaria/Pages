@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Pages\Shells\Observers;
 
-use TypiCMS\Modules\Pages\Observers\UriObserver as Base;
+use TypiCMS\Modules\Pages\Observers\UriObserver as BaseClass;
 
-class UriObserver extends Base
+class UriObserver extends BaseClass
 {
 
 }

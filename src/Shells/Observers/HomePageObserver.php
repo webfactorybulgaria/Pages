@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Pages\Shells\Observers;
 
-use TypiCMS\Modules\Pages\Observers\HomePageObserver as Base;
+use TypiCMS\Modules\Pages\Observers\HomePageObserver as BaseClass;
 
-class HomePageObserver extends Base
+class HomePageObserver extends BaseClass
 {
 
 }

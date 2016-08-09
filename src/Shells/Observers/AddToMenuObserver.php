@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Pages\Shells\Observers;
 
-use TypiCMS\Modules\Pages\Observers\AddToMenuObserver as Base;
+use TypiCMS\Modules\Pages\Observers\AddToMenuObserver as BaseClass;
 
-class AddToMenuObserver extends Base
+class AddToMenuObserver extends BaseClass
 {
 
 }

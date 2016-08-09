@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Pages\Shells\Models;
 
-use TypiCMS\Modules\Pages\Models\Page as Base;
+use TypiCMS\Modules\Pages\Models\Page as BaseClass;
 
-class Page extends Base
+class Page extends BaseClass
 {
 
 }

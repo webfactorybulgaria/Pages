@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Pages\Shells\Events;
 
-use TypiCMS\Modules\Pages\Events\ResetChildren as Base;
+use TypiCMS\Modules\Pages\Events\ResetChildren as BaseClass;
 
-class ResetChildren extends Base
+class ResetChildren extends BaseClass
 {
 
 }

@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Pages\Shells\Repositories;
 
-use TypiCMS\Modules\Pages\Repositories\PageInterface as Base;
+use TypiCMS\Modules\Pages\Repositories\PageInterface as BaseInterface;
 
-interface PageInterface extends Base
+interface PageInterface extends BaseInterface
 {
 
 }

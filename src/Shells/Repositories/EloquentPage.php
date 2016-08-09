@@ -2,9 +2,9 @@
 
 namespace TypiCMS\Modules\Pages\Shells\Repositories;
 
-use TypiCMS\Modules\Pages\Repositories\EloquentPage as Base;
+use TypiCMS\Modules\Pages\Repositories\EloquentPage as BaseClass;
 
-class EloquentPage extends Base implements PageInterface
+class EloquentPage extends BaseClass implements PageInterface
 {
 
 }
