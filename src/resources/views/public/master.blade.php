@@ -24,7 +24,7 @@
 @section('js')
     @if($page->js)
     <script>
-        {{ $page->js }}
+        {!! $page->js !!}
     </script>
     @endif
 @endsection

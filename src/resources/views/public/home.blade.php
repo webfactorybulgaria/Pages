@@ -1,29 +1,32 @@
 @extends('pages::public.master')
 
-@section('site-title')
-<h1 class="site-title">@include('core::public._site-title')</h1>
-@endsection
-
 @section('page')
-
-    {!! $page->present()->body !!}
-
-    @include('galleries::public._galleries', ['model' => $page])
 
 {{--
     @if($slides = Slides::all() and $slides->count())
-        @include('slides::public._slider', ['items' => $slides])
+        @include('slides::public._slider', ['items' => $slides, 'custom_class' => 'swiper-home'])
     @endif
 --}}
+
+    <div class="container">
+        {!! $page->present()->body !!}
+    </div>
+
 {{--
     @if($latestNews = News::latest(3) and $latestNews->count())
-        <div class="container-news">
-            <h2>@lang('db.Latest news')</h2>
-            @include('news::public._list', ['items' => $latestNews])
-            <a href="{{ route($lang.'.news') }}" class="btn btn-default btn-xs">@lang('db.All news')</a>
+    <section class="news-section">
+        <div class="container">
+            {!! Blocks::render('news-home') !!}
+            @include('news::public._list', ['items' => $latestNews, 'custom_class' => 'news-list-home'])
+            {{-- <a href="{{ route($lang.'.news') }}" class="btn btn-default btn-xs">@lang('db.All news')</a> --}}
         </div>
+    </section>
     @endif
 --}}
+
+    @include('galleries::public._galleries', ['model' => $page, 'custom_class' => 'gallery-home'])
+
+
 {{--
     @if($incomingEvents = Events::incoming() and $incomingEvents->count())
         <div class="container-events">

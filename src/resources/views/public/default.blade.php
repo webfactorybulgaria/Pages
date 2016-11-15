@@ -9,8 +9,10 @@
         @endforeach
     </ul>
     @endif
+    <div class="container">
+        {!! $page->present()->body !!}
 
-    {!! $page->present()->body !!}
-    @include('galleries::public._galleries', ['model' => $page])
+        @include('galleries::public._galleries', ['model' => $page])
+    </div>
 
 @endsection
