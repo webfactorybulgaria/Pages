@@ -18,7 +18,6 @@
         <div class="container">
             {!! Blocks::render('news-home') !!}
             @include('news::public._list', ['items' => $latestNews, 'custom_class' => 'news-list-home'])
-            {{-- <a href="{{ route($lang.'.news') }}" class="btn btn-default btn-xs">@lang('db.All news')</a> --}}
         </div>
     </section>
     @endif
