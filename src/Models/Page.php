@@ -145,6 +145,15 @@ class Page extends Base
     }
 
     /**
+     * A page can have children.
+     * Special method for when traversing through the children recursively
+     */
+    public function childrenWithTranslationsPageParent()
+    {
+        return $this->children()->with('translations.page.parent');
+    }
+
+    /**
      * A page can have a parent.
      */
     public function parent()

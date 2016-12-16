@@ -29,8 +29,17 @@ class EloquentPage extends RepositoriesAbstract implements PageInterface
 
         $this->syncRelation($model, $data, 'galleries');
 
+        $langsChanged = [];
+        foreach ($model->translations as $translation) {
+            if (isset($translation->getDirty()['slug'])) {
+                $langsChanged[$translation->locale] = true;
+            }
+        }
+
         if ($model->save()) {
-            event('page.resetChildrenUri', [$model]);
+            if (!empty($langsChanged)) {
+                event('page.resetChildrenUri', [$model, $langsChanged]);
+            }
 
             return true;
         }

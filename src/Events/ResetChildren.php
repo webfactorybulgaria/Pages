@@ -15,18 +15,22 @@ class ResetChildren
      *
      * @return void
      */
-    public function resetChildrenUri(Page $page)
+    public function resetChildrenUri(Page $page, $langsChanged = [])
     {
-        foreach ($page->children as $childPage) {
-            foreach (config('translatable.locales') as $locale) {
-                if (is_null($page->translate($locale)->uri)) {
-                    $childPage->translate($locale)->uri = null;
-                } else {
-                    $childPage->translate($locale)->uri = '';
+        foreach ($page->childrenWithTranslationsPageParent as $childPage) {
+            foreach ($childPage->translations as $k => $translation) {
+                if (empty($langsChanged) || !empty($langsChanged[$translation->locale])){
+                    if (is_null($translation->uri)) {
+                        $translation->uri = null;
+                    } else {
+                        $translation->uri = '';
+                    }
+                    $translation->timestamps = false; // disable update timestamps for performance
                 }
             }
+            $childPage->skipHistoryWrite = true;
             $childPage->save();
-            $this->resetChildrenUri($childPage);
+            $this->resetChildrenUri($childPage, $langsChanged);
         }
     }
 
