@@ -48,6 +48,11 @@
             @endforeach
         </div>
         {!! TranslatableBootForm::hidden('uri') !!}
+
+        @if (!$model->id)
+        {!! BootForm::select(trans('validation.attributes.add_to_menu'), 'add_to_menu', ['' => ''] + Menus::all()->pluck('name', 'id')->all(), null, array('class' => 'form-control')) !!}
+        @endif
+
         {!! TranslatableBootForm::hidden('status')->value(0) !!}
         {!! TranslatableBootForm::checkbox(trans('validation.attributes.online'), 'status') !!}
         {!! TranslatableBootForm::textarea(trans('validation.attributes.body'), 'body')->addClass('ckeditor') !!}
@@ -75,9 +80,7 @@
             {!! BootForm::select(trans('validation.attributes.module'), 'module', TypiCMS::getModulesForSelect()) !!}
         @endif
         {!! BootForm::select(trans('validation.attributes.template'), 'template', TypiCMS::templates())->helpBlock(TypiCMS::getTemplateDir()) !!}
-        @if (!$model->id)
-        {!! BootForm::select(trans('validation.attributes.add_to_menu'), 'add_to_menu', ['' => ''] + Menus::all()->pluck('name', 'id')->all(), null, array('class' => 'form-control')) !!}
-        @endif
+
         {!! BootForm::textarea(trans('validation.attributes.css'), 'css') !!}
         {!! BootForm::textarea(trans('validation.attributes.js'), 'js') !!}
     </div>

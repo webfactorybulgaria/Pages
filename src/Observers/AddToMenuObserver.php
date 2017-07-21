@@ -26,6 +26,7 @@ class AddToMenuObserver
             ];
             foreach ($model->translations as $translation) {
                 $data[$translation->locale]['title'] = $translation->title;
+                $data[$translation->locale]['status'] = 1;
             }
             app('TypiCMS\Modules\Menus\Shells\Repositories\MenulinkInterface')->create($data);
         }
