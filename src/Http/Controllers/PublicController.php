@@ -76,7 +76,7 @@ class PublicController extends BasePublicController
      */
     private function getBrowserLanguageOrDefault()
     {
-        if ($browserLanguage = getenv('HTTP_ACCEPT_LANGUAGE')) {
+        if (config('app.detect_locale') && $browserLanguage = getenv('HTTP_ACCEPT_LANGUAGE')) {
             $browserLocale = substr($browserLanguage, 0, 2);
             if (in_array($browserLocale, TypiCMS::getOnlineLocales())) {
                 return $browserLocale;
