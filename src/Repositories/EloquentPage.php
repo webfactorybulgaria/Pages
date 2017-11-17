@@ -27,7 +27,11 @@ class EloquentPage extends RepositoriesAbstract implements PageInterface
 
         $model->fill($data);
 
-        $this->syncRelation($model, $data, 'galleries');
+        array_push($syncTables, 'galleries');
+
+        foreach ($syncTables as $table) {
+            $this->syncRelation($model, $data, $table);
+        }
 
         $langsChanged = [];
         foreach ($model->translations as $translation) {
