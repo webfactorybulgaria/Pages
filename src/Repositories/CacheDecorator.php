@@ -25,7 +25,7 @@ class CacheDecorator extends CacheAbstractDecorator implements PageInterface
      */
     public function getFirstByUri($uri, $locale, array $with = [])
     {
-        $cacheKey = md5(config('app.locale').'getFirstByUri.'.$uri.$locale.serialize($with).serialize(Request::all()));
+        $cacheKey = md5($this->cachePrefix().'getFirstByUri.'.$uri.$locale.serialize($with).serialize(Request::all()));
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);
@@ -46,7 +46,7 @@ class CacheDecorator extends CacheAbstractDecorator implements PageInterface
      */
     public function getSubMenu($uri, $all = false)
     {
-        $cacheKey = md5(config('app.locale').'getSubMenu.'.$uri.$all);
+        $cacheKey = md5($this->cachePrefix().'getSubMenu.'.$uri.$all);
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);
@@ -67,7 +67,7 @@ class CacheDecorator extends CacheAbstractDecorator implements PageInterface
      */
     public function getForRoutes()
     {
-        $cacheKey = md5(config('app.locale').'getForRoutes');
+        $cacheKey = md5($this->cachePrefix().'getForRoutes');
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);
@@ -99,7 +99,7 @@ class CacheDecorator extends CacheAbstractDecorator implements PageInterface
     public function allForTreeMap()
     {
 
-        $cacheKey = md5(config('app.locale').'allForTreeMap');
+        $cacheKey = md5($this->cachePrefix().'allForTreeMap');
 
         if ($this->cache->has($cacheKey)) {
             return $this->cache->get($cacheKey);
